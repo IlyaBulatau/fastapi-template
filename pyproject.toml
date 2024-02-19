@@ -1,0 +1,48 @@
+[tool.poetry]
+name = "fastapi-template"
+version = "0.1.0"
+description = ""
+authors = ["IlyaBulatau <ilyabulatau@gmail.com>"]
+readme = "README.md"
+packages = [{include = "fastapi_template"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.109.2"
+uvicorn = {extras = ["standart"], version = "^0.27.1"}
+alembic = "^1.13.1"
+sqlalchemy = "^2.0.27"
+pydantic-settings = "^2.2.0"
+asyncpg = "^0.29.0"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.2.0"
+pre-commit = "^3.6.2"
+flake8 = "^7.0.0"
+isort = "^5.13.2"
+
+[tool.black]
+line-length=79
+exclude=["migrations"]
+include="src"
+
+[tool.isort]
+line_length=79
+skip=["migrations", "__init__.py"]
+length_sort=true
+lines_after_imports=2
+lines_between_sections=1
+group_by_package=true
+ignore_comments=true
+src_paths = ["src"]
+combine_straight_imports=true
+
+[tool.flake8]
+max-line-length=79
+exclude=["migrations", "__init__.py"]
+ignore=[]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
