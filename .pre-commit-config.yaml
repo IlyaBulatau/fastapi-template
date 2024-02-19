@@ -5,17 +5,17 @@ repos:
         name: isort
         language: python
         types: [ python ]
-        entry: isort src/
+        entry: isort  --settigns-file pyproject.toml src/
 
       - id: black
         name: black
         language: python
         types: [ python ]
-        entry: black src/
+        entry: black --config pyproject.toml src/
 
 
       - id: flake8
         name: flake8
         language: python
         types: [ python ]
-        entry: flake8 src/
+        entry: flake8 --config pyproject.toml src/

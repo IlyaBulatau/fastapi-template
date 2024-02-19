@@ -24,8 +24,9 @@ isort = "^5.13.2"
 
 [tool.black]
 line-length=79
-exclude=["migrations"]
-include="src"
+exclude="""
+    migrations
+    """
 
 [tool.isort]
 line_length=79
