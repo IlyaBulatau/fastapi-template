@@ -3,19 +3,19 @@ repos:
     hooks:
       - id: isort
         name: isort
-        language: python
+        language: system
         types: [ python ]
         entry: isort  --settigns-file pyproject.toml src/
 
       - id: black
         name: black
-        language: python
+        language: system
         types: [ python ]
         entry: black --config pyproject.toml src/
 
 
       - id: flake8
         name: flake8
-        language: python
+        language: system
         types: [ python ]
         entry: flake8 --config pyproject.toml src/
