@@ -6,12 +6,14 @@ repos:
         language: system
         types: [ python ]
         entry: isort  --settigns-file pyproject.toml src/
+        exclude: ^migrations/
 
       - id: black
         name: black
         language: system
         types: [ python ]
         entry: black --config pyproject.toml src/
+        exclude: ^migrations/
 
 
       - id: flake8
@@ -19,3 +21,4 @@ repos:
         language: system
         types: [ python ]
         entry: flake8 --config pyproject.toml src/
+        exclude: ^migrations/
