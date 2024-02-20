@@ -20,5 +20,5 @@ repos:
         name: flake8
         language: system
         types: [ python ]
-        entry: flake8 --config pyproject.toml src/
+        entry: flake8 --config .flake8 src/
         exclude: ^migrations/

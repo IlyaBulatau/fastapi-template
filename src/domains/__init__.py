@@ -1,1 +1,1 @@
-from .models import  Category, City, Product
+from .models import Category, City, Product

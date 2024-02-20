@@ -1,7 +1,8 @@
-from sqlalchemy import select, insert, Result
+from sqlalchemy import Result, insert, select
+
+from domains.models import City
 
 from .base import BaseRepositiry
-from domains.models import City
 
 
 class CityRepositiry(BaseRepositiry):
@@ -15,7 +16,7 @@ class CityRepositiry(BaseRepositiry):
         return city
 
     async def get(self, id: int) -> City:
-        query = select(City).filter(City.id==id)
+        query = select(City).filter(City.id == id)
         result: Result = await self.session.execute(query)
 
         city: City = result.scalar()

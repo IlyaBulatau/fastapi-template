@@ -17,7 +17,8 @@ class _Settings(BaseSettings):
             password=self.POSTGRES_PASSWORD,
             host=self.POSTGRES_HOST,
             port=self.POSTGRES_PORT,
-            name=self.POSTGRES_NAME
+            name=self.POSTGRES_NAME,
         )
+
 
 SETTINGS = _Settings()

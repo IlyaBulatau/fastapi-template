@@ -10,11 +10,9 @@ class BaseRepositiry(ABC):
 
     def __init__(self, session: AsyncSession = GET_ASYNC_SESSION):
         self.session: AsyncSession = session
-    
+
     @abstractmethod
-    async def add(self, model: BaseModel) -> BaseModel:
-        ...
-    
+    async def add(self, model: BaseModel) -> BaseModel: ...
+
     @abstractmethod
-    async def get(self, id: int) -> BaseModel:
-        ...
+    async def get(self, id: int) -> BaseModel: ...

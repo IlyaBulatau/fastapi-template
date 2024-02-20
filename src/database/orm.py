@@ -1,9 +1,9 @@
-from domains import Category, City, Product
-
+from sqlalchemy import (Column, DateTime, ForeignKey, Integer, Numeric, String,
+                        Table, Text)
 from sqlalchemy.orm import registry, relationship
 from sqlalchemy.sql import func
-from sqlalchemy import Table, Column, Integer, String, Text, Numeric, ForeignKey, DateTime
 
+from domains import Category, City, Product
 
 mapper_registry = registry()
 
@@ -54,13 +54,17 @@ def setup_mapper():
         category,
         properties={
             "products": relationship(Product, backref="category"),
-            "cities": relationship(City, back_populates="categories", secondary=city_category)
-        }
+            "cities": relationship(
+                City, back_populates="categories", secondary=city_category
+            ),
+        },
     )
     mapper_registry.map_imperatively(
-        City, 
-        city, 
+        City,
+        city,
         properties={
-            "categories": relationship(Category, back_populates="cities", secondary=city_category)
-            }
-        )
+            "categories": relationship(
+                Category, back_populates="cities", secondary=city_category
+            )
+        },
+    )

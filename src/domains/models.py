@@ -1,4 +1,4 @@
-from dataclasses import dataclass, asdict, field
+from dataclasses import asdict, dataclass, field
 from datetime import datetime
 
 
@@ -8,9 +8,9 @@ class BaseModel:
     created_at: datetime = field(init=False, default=None)
     updated_at: datetime = field(init=False, default=None)
 
-    
     def to_dict(self):
         return asdict(self)
+
 
 @dataclass(unsafe_hash=True)
 class Category(BaseModel):
