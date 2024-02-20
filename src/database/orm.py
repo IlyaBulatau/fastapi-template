@@ -1,9 +1,18 @@
-from sqlalchemy import (Column, DateTime, ForeignKey, Integer, Numeric, String,
-                        Table, Text)
+from sqlalchemy import (
+    Text,
+    Table,
+    Column,
+    String,
+    Integer,
+    Numeric,
+    DateTime,
+    ForeignKey,
+)
 from sqlalchemy.orm import registry, relationship
 from sqlalchemy.sql import func
 
-from domains import Category, City, Product
+from domains import City, Product, Category
+
 
 mapper_registry = registry()
 
@@ -47,7 +56,7 @@ city_category = Table(
 )
 
 
-def setup_mapper():
+def setup_mapper() -> None:
     mapper_registry.map_imperatively(Product, product)
     mapper_registry.map_imperatively(
         Category,

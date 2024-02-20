@@ -1,8 +1,9 @@
-from fastapi import APIRouter, Depends
+from fastapi import Depends, APIRouter
 
 from domains.models import City
 from repositories.base import BaseRepositiry
 from repositories.cities import CityRepositiry
+
 
 router = APIRouter(prefix="/cities", tags=["City"])
 

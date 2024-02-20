@@ -4,7 +4,7 @@ from database.orm import setup_mapper
 from endpoints.city_controllers import router as city_router
 
 
-def setup_router(app: FastAPI):
+def setup_router(app: FastAPI) -> None:
     app.include_router(city_router)
 
 

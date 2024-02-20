@@ -1,12 +1,12 @@
-from dataclasses import asdict, dataclass, field
 from datetime import datetime
+from dataclasses import field, asdict, dataclass
 
 
 @dataclass
 class BaseModel:
     id: int = field(init=False, default_factory=int)
-    created_at: datetime = field(init=False, default=None)
-    updated_at: datetime = field(init=False, default=None)
+    created_at: datetime | None = field(init=False, default=None)
+    updated_at: datetime | None = field(init=False, default=None)
 
     def to_dict(self):
         return asdict(self)
