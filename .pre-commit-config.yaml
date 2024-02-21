@@ -6,14 +6,14 @@ repos:
         language: system
         types: [ python ]
         entry: isort  --settings-file pyproject.toml src/
-        exclude: ^migrations/
+        exclude: ^migrations/|tests
 
       - id: black
         name: black
         language: system
         types: [ python ]
         entry: black --config pyproject.toml src/
-        exclude: ^migrations/
+        exclude: ^migrations/|tests
 
 
       - id: flake8
@@ -21,4 +21,4 @@ repos:
         language: system
         types: [ python ]
         entry: flake8 --config .flake8 src/
-        exclude: ^migrations/
+        exclude: ^migrations/|tests
