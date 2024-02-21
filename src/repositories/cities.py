@@ -1,4 +1,4 @@
-from sqlalchemy import Result, insert, select
+from sqlalchemy import Result, delete, insert, select
 
 from domains.models import City
 
@@ -21,3 +21,9 @@ class CityRepositiry(BaseRepositiry):
 
         city: City = result.scalar()
         return city
+
+    async def remove(self, id: int) -> None:
+        query = delete(City).filter(City.id == id)
+
+        await self.session.execute(query)
+        await self.session.commit()

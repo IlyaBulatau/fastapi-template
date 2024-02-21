@@ -34,3 +34,16 @@ async def create_city(
     city: City = await city_repo.add(name)
 
     return city
+
+
+@router.delete(
+    "/{city_id}",
+    response_model=None,
+    status_code=204,
+    summary="Удаление города по ID",
+)
+async def delete_city(
+    city_id: int, city_repo: BaseRepositiry = Depends(CityRepositiry)
+):
+    await city_repo.remove(city_id)
+    return None
