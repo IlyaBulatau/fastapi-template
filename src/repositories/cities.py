@@ -15,6 +15,13 @@ class CityRepositiry(BaseRepositiry):
         city: City = result.scalar()
         return city
 
+    async def list(self) -> list[City]:
+        query = select(City)
+
+        result: Result = await self.session.execute(query)
+        cities: list[City] = result.scalars()
+        return cities
+
     async def get(self, id: int) -> City:
         query = select(City).filter(City.id == id)
         result: Result = await self.session.execute(query)

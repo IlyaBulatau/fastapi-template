@@ -11,6 +11,17 @@ router = APIRouter(prefix="/cities", tags=["City"])
 
 
 @router.get(
+    "/",
+    response_model=list[City],
+    status_code=200,
+    summary="Получение всех городов",
+)
+async def get_all_cities(city_repo: BaseRepositiry = Depends(CityRepositiry)):
+    cities: list[City] = await city_repo.list()
+    return cities
+
+
+@router.get(
     "/{city_id}",
     response_model=City,
     status_code=200,
