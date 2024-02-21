@@ -11,7 +11,7 @@ from sqlalchemy import (
 from sqlalchemy.orm import registry, relationship
 from sqlalchemy.sql import func
 
-from domains import City, Product, Category
+from domains.models import City, Product, Category
 
 
 mapper_registry = registry()

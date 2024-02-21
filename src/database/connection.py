@@ -17,7 +17,6 @@ async def get_async_session() -> AsyncSession:  # type: ignore
     session = async_session()
     try:
         yield session
-    except Exception:
-        await session.rollback()
     finally:
+        await session.rollback()
         await session.close()
