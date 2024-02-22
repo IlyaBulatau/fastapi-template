@@ -1,7 +1,0 @@
-[flake8]
-exclude =
-    migrations,
-    __init__.py,
-    tests/
-max-line-length=79
-extend-ignore=E701
