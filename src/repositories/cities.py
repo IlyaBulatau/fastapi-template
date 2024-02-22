@@ -1,4 +1,4 @@
-from sqlalchemy import Result, delete, insert, select
+from sqlalchemy import Result, ScalarResult, delete, insert, select
 
 from domains.models import City
 
@@ -19,8 +19,8 @@ class CityRepositiry(BaseRepositiry):
         query = select(City)
 
         result: Result = await self.session.execute(query)
-        cities: list[City] = result.scalars()
-        return cities
+        cities: ScalarResult = result.scalars()
+        return cities.all()
 
     async def get(self, id: int) -> City:
         query = select(City).filter(City.id == id)
