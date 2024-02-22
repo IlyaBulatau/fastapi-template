@@ -8,6 +8,8 @@ from sqlalchemy.ext.asyncio import (
 
 from app import app
 from database.orm import mapper_registry
+from database.connection import get_async_session
+
 
 
 @pytest.fixture(scope="session")
@@ -26,16 +28,14 @@ async def db():
     )
 
     async with sessionmaker() as session:
-
-        def overide_get_async_session():
-            yield session
-
-        app.dependency_overrides["get_async_session"] = (
-            overide_get_async_session
-        )
         yield session
 
 
 @pytest.fixture(scope="session")
 async def client(db):
+
+    def get_session_ovveride():
+        return db
+    
+    app.dependency_overrides[get_async_session] = get_session_ovveride
     yield AsyncClient(app=app, base_url="http://test")
